@@ -4,7 +4,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6FD3ACFB-42E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem", "AccessControlSystem\AccessControlSystem.csproj", "{8B77EB49-6648-415C-AC5A-BFCF8DF5019D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.Console", "AccessControlSystem.Console\AccessControlSystem.Console.csproj", "{009F528E-0159-41C4-8E92-18D6D1768A62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.ConsoleApp", "AccessControlSystem.ConsoleApp\AccessControlSystem.ConsoleApp.csproj", "{009F528E-0159-41C4-8E92-18D6D1768A62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlSystem.Tests", "AccessControlSystem.Tests\AccessControlSystem.Tests.csproj", "{EEA59A0F-3942-4265-B098-20380E69D06E}"
 EndProject

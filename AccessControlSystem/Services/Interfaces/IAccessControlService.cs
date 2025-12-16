@@ -5,21 +5,14 @@ namespace AccessControlSystem.Services.Interfaces;
     
 public interface IAccessControlService
 {
-    // Для сотрудников
-    Task<AccessResult> ValidateEmployeeAccessAsync(string cardNumber, string checkpoint);
-        
-    // Для транспорта
+    Task<Employee> CreateEmployeeAsync(Employee employee);
+    Task<AccessResult> ValidateEmployeeAccessAsync(string cardNumber);
     Task<VehiclePass> RegisterVehicleEntryAsync(string vehicleNumber, string driverName, 
-        string organization, bool isInternal, string checkpoint);
-    Task<bool> MarkVehicleExitAsync(int vehicleId, string checkpoint);
-        
-    // Для посетителей
+        string organization, bool isInternal);
+    Task<bool> MarkVehicleExitAsync(int vehicleId);
     Task<Visitor> RegisterVisitorAsync(string fullName, string organization, 
-        string purpose, string contactPerson, string checkpoint);
-    Task<bool> MarkVisitorExitAsync(int visitorId, string checkpoint);
-        
-    // Получение данных
+        string purpose, string contactPerson);
+    Task<bool> MarkVisitorExitAsync(int visitorId);
     Task<List<VehiclePass>> GetActiveVehiclesAsync();
-    Task<List<Visitor>> GetActiveVisitorsAsync();
     Task<List<AccessLog>> GetTodayAccessLogsAsync();
 }

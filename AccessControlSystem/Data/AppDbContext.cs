@@ -48,16 +48,55 @@ public class AppDbContext : DbContext
             // AccessLog
             modelBuilder.Entity<AccessLog>(entity =>
             {
-                entity.HasKey(a => a.Id);
-                entity.Property(a => a.CheckpointNumber).IsRequired().HasMaxLength(20);
-                entity.HasIndex(a => a.AccessTime);
-                entity.HasIndex(a => new { a.EntityType, a.EntityId });
-                
-                // Связи
-                entity.HasOne(a => a.Employee)
-                    .WithMany(e => e.AccessLogs)
-                    .HasForeignKey(a => a.EmployeeId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasKey(e => e.Id);
+    
+                // Конфигурация обычных свойств
+                entity.Property(e => e.EntityType)
+                    .IsRequired();
+    
+                entity.Property(e => e.EntityId)
+                    .IsRequired(); // Это НЕ внешний ключ, просто int
+    
+                entity.Property(e => e.AccessTime)
+                    .IsRequired();
+    
+                entity.Property(e => e.IsEntry)
+                    .IsRequired();
+    
+                entity.Property(e => e.Reason)
+                    .HasMaxLength(500);
+    
+                entity.Property(e => e.CreatedAt)
+                    .IsRequired();
+    
+                // Внешние ключи (nullable)
+                entity.Property(e => e.EmployeeId)
+                    .IsRequired(false);
+    
+                entity.Property(e => e.VehiclePassId)
+                    .IsRequired(false);
+    
+                entity.Property(e => e.VisitorId)
+                    .IsRequired(false);
+    
+                // Связи (внешние ключи)
+                entity.HasOne(e => e.Employee)
+                    .WithMany()
+                    .HasForeignKey(e => e.EmployeeId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired(false);
+    
+                entity.HasOne(e => e.VehiclePass)
+                    .WithMany()
+                    .HasForeignKey(e => e.VehiclePassId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired(false);
+    
+                entity.HasOne(e => e.Visitor)
+                    .WithMany()
+                    .HasForeignKey(e => e.VisitorId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired(false);
             });
             
             // Seed данные для тестирования

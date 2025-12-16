@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <!-- Для консольного приложения -->
+        <OutputType>Exe</OutputType>
+
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Для отладки в Rider -->
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    </PropertyGroup>
+
+    <!-- Ссылка на основной проект -->
+    <ItemGroup>
+        <ProjectReference Include="..\AccessControlSystem\AccessControlSystem.csproj" />
+    </ItemGroup>
+
+    <!-- Обязательные NuGet пакеты -->
+    <ItemGroup>
+        <!-- Для Entity Framework -->
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+
+        <!-- Для Dependency Injection -->
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
+
+        <!-- Для конфигурации -->
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.1" />
+
+        <!-- Для логирования -->
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.1" />
+    </ItemGroup>
+
+    <!-- Копировать appsettings.json в выходную директорию -->
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>

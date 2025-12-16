@@ -16,7 +16,7 @@ public class AccessLogRepository : IAccessLogRepository
         
     public async Task<List<AccessLog>> GetTodayLogsAsync()
     {
-        var today = DateTime.Today;
+        var today = DateTime.UtcNow.Date;
         var tomorrow = today.AddDays(1);
             
         return await _context.AccessLogs
